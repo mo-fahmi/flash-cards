@@ -175,34 +175,20 @@ const questions = [
 // id - group - question - codeBlock - options - correctOption
 // timesAsked - timesCorrect - timesWrong
 
-// ====================================================================
-
-// getback we can't still fix the indentation problem
-function removeSpace(str) {
-  return str.replace(/^\s+/gm, "");
-}
-
-// const string = `
-// hi
-//   my
-//   name
-//       is
-//   famhi
-// `;
-// console.log(string);
-// console.log(removeSpace(string));
-// console.log(questions[3].codeBlock);
-// console.log(removeSpace(questions[3].codeBlock));
-
-// ====================================================================
+//====================================================================
 
 function generateQuestion() {
   const randomNum = Math.floor(Math.random() * questions.length);
+  const last = randomNum;
   return questions[randomNum];
 }
 
 let selectedQ;
 let correctAns;
+
+function removeSpace(str) {
+  return str.replace(/^\s+/gm, "").trim();
+}
 
 function clearOptions() {
   options.forEach((o) => {
@@ -222,10 +208,9 @@ function displayNewQuestion() {
   questionTxt.innerText = selectedQ.question;
 
   // codeBlock
-  // deleteme we need to fix the whitespace problem
   codeContainer.style.display = "block";
   selectedQ.codeBlock
-    ? (codeTxt.innerText = selectedQ.codeBlock)
+    ? (codeTxt.innerText = removeSpace(selectedQ.codeBlock))
     : (codeContainer.style.display = "none");
 
   // options
