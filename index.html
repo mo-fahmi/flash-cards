@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="/assets/quiz.png" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flash Cards</title>
+  </head>
+  <body>
+    <div class="background__image"></div>
+    <h1>Make Studying Great Again</h1>
+    <div class="card__container">
+      <div class="card__image">
+        <img id="question__group-img" src="assets/git.png" alt="" />
+      </div>
+      <div class="card__question">
+        <h2 id="question__txt">
+          What will the following code output to the console?
+        </h2>
+      </div>
+      <div class="card__code" id="code-container">
+        <pre>
+  <code id="code__block">
+const array = [1, 2, 3];
+array[10] = 42;
+console.log(array.length);
+  </code>
+</pre>
+      </div>
+      <div class="card__options">
+        <div class="option option--choice">
+          [3] The array only considers explicitly defined elements for its
+          length.
+        </div>
+        <div class="option option--choice">
+          [11] The length property includes all elements, even if undefined ones
+          exist between indices.
+        </div>
+        <div class="option option--choice">
+          [10] The array's length property stops at the last explicitly assigned
+          index.
+        </div>
+      </div>
+    </div>
+    <audio id="confettiSound" src="assets/confetti.mp3" preload="auto"></audio>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+  </body>
+</html>
