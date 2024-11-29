@@ -177,14 +177,23 @@ const questions = [
 
 //====================================================================
 
-function generateQuestion() {
-  const randomNum = Math.floor(Math.random() * questions.length);
-  const last = randomNum;
-  return questions[randomNum];
-}
+const notAsked = [];
+questions.forEach((q) => notAsked.push(q.id));
+
+const qCorrect = [];
 
 let selectedQ;
 let correctAns;
+
+function generateQuestion() {
+  const rdmIdx = Math.floor(Math.random() * notAsked.length);
+  const removed = notAsked.splice(rdmIdx, 1);
+  selectedQ = questions.find((q) => q.id === Number(removed));
+  selectedQ.timesAsked++;
+  return selectedQ;
+}
+
+//====================================================================
 
 function removeSpace(str) {
   return str.replace(/^\s+/gm, "").trim();
@@ -232,6 +241,8 @@ options.forEach((o, i) => {
     // right answer
     if (selectedAns === correctAns) {
       playConfetti();
+      selectedQ.timesCorrect++;
+      qCorrect.push(selectedQ.id);
       setTimeout(() => {
         displayNewQuestion();
       }, 650);
@@ -240,6 +251,8 @@ options.forEach((o, i) => {
 
     // wrong answer
     o.classList.add("shake");
+    selectedQ.timesWrong++;
+    if (!notAsked.includes(Number(selectedQ.id))) notAsked.push(selectedQ.id);
   });
 });
 
