@@ -1,5 +1,7 @@
-"use strict";
-
+const groupBtns = document.querySelectorAll(
+  ".groups-buttons button:not(#mix-questions)"
+);
+const mixBtn = document.getElementById("mix-questions");
 const groupImg = document.getElementById("question__group-img");
 const questionTxt = document.getElementById("question__txt");
 const codeTxt = document.getElementById("code__block");
@@ -172,10 +174,27 @@ const questions = [
   },
 ];
 
-// id - group - question - codeBlock - options - correctOption
-// timesAsked - timesCorrect - timesWrong
+// ====================================================================
 
-//====================================================================
+groupBtns.forEach((b) => {
+  b.addEventListener("click", () => {
+    b.classList.toggle("selected");
+    mixBtn.classList.remove("selected");
+  });
+});
+
+mixBtn.addEventListener("click", () => {
+  const isSelected = mixBtn.classList.contains("selected");
+  if (isSelected) {
+    mixBtn.classList.remove("selected");
+    groupBtns.forEach((b) => b.classList.remove("selected"));
+  } else {
+    mixBtn.classList.add("selected");
+    groupBtns.forEach((b) => b.classList.add("selected"));
+  }
+});
+
+// ====================================================================
 
 const notAsked = [];
 questions.forEach((q) => notAsked.push(q.id));
@@ -193,7 +212,7 @@ function generateQuestion() {
   return selectedQ;
 }
 
-//====================================================================
+// ====================================================================
 
 function removeSpace(str) {
   return str.replace(/^\s+/gm, "").trim();

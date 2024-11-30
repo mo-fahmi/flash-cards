@@ -71,6 +71,97 @@ h1 {
   background-clip: text;
 }
 
+/* choosing groups */
+
+.groups-buttons {
+  width: 100%;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(2, 222px);
+  gap: 1rem;
+}
+
+.button {
+  cursor: pointer;
+  padding: 1rem;
+  font-size: 1.2rem;
+  color: white;
+  border-radius: 0.5em;
+  box-shadow: 0 0 1em 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-out;
+  position: relative;
+}
+
+.button:hover {
+  transform: scale(1.015);
+  transition: all 0.1s ease;
+}
+
+.icon {
+  margin: -3px 0.5em 0 0;
+  width: 1em;
+  border-radius: 4px;
+}
+
+.button.css {
+  outline: 1px solid hsla(216, 56%, 45%, 0.5);
+  background: radial-gradient(
+    circle at bottom,
+    hsla(216, 66%, 46%, 0.6),
+    hsl(216, 56%, 6%) 70%
+  );
+  &.selected {
+    outline: 3px solid hsl(216, 56%, 72%);
+  }
+}
+.button.js {
+  outline: 1px solid hsla(40, 56%, 45%, 0.5);
+  background: radial-gradient(
+    circle at bottom,
+    hsla(40, 66%, 46%, 0.5),
+    hsl(40, 56%, 6%) 70%
+  );
+  &.selected {
+    outline: 3px solid hsl(40, 56%, 72%);
+  }
+}
+.button.shopify {
+  outline: 1px solid hsla(150, 56%, 45%, 0.5);
+  background: radial-gradient(
+    circle at bottom,
+    hsla(150, 66%, 46%, 0.5),
+    hsl(150, 56%, 6%) 70%
+  );
+  &.selected {
+    outline: 3px solid hsl(150, 56%, 72%);
+  }
+}
+.button.git {
+  outline: 1px solid hsla(250, 56%, 45%, 0.5);
+  background: radial-gradient(
+    circle at bottom,
+    hsla(250, 66%, 46%, 0.6),
+    hsl(250, 56%, 6%) 70%
+  );
+  &.selected {
+    outline: 3px solid hsl(250, 56%, 80%);
+  }
+}
+.button.mixed {
+  grid-column: span 2;
+  outline: 1px solid hsla(16, 56%, 45%, 0.5);
+  background: radial-gradient(
+    circle at bottom,
+    hsla(16, 66%, 46%, 0.4),
+    hsl(16, 56%, 6%) 70%
+  );
+  &.selected {
+    outline: 3px solid hsl(16, 56%, 80%);
+  }
+}
+
+/* QUESTIONS */
+
 .card__container {
   width: 380px;
   position: relative;
@@ -200,3 +291,13 @@ code {
     transform: translate(1px, -2px) rotate(-1deg);
   }
 }
+
+.hide {
+  display: none;
+}
+
+/* @media (max-width: 600px) {
+  .groups-buttons {
+    grid-template-columns: repeat(auto-fill, 222px);
+  }
+} */
