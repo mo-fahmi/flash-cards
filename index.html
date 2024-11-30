@@ -11,49 +11,44 @@
     <h1>Make Studying Great Again</h1>
     <div class="select__and__start">
       <div class="groups-buttons">
-        <button class="button shopify">
+        <button data-group="shopify" class="button selection shopify">
           <img class="icon" src="assets/shopify.png" alt="" />Liquid
         </button>
-        <button class="button js">
+        <button data-group="javascript" class="button selection js">
           <img class="icon" src="assets/javascript.png" alt="" />JavaScript
         </button>
-        <button class="button css">
+        <button data-group="css" class="button selection css">
           <img class="icon" src="assets/css.png" alt="" />CSS
         </button>
-        <button class="button git">
+        <button data-group="git" class="button selection git">
           <img class="icon" src="assets/git.png" alt="" />Git
         </button>
-        <button class="button mixed" id="mix-questions">
+        <button
+          data-group="mixed"
+          class="button selection mixed"
+          id="mix-questions"
+        >
           <img class="icon" src="assets/quiz.png" alt="" />All Mixed
         </button>
       </div>
-      <button class="button start" id="start" >Start</button>
+      <button onclick="filterSelected()" class="button start" id="start">
+        Start
+      </button>
     </div>
-    <div class="card__container hide">
+    <div class="card__container">
       <div class="card__image">
-        <img id="question__group-img" src="assets/git.png" alt="" />
+        <img id="question__group-img" src="" alt="" />
       </div>
       <div class="card__question">
-        <h2 id="question__txt">
-          What will the following code output to the console?
-        </h2>
+        <h2 id="question__txt"></h2>
       </div>
       <div class="card__code" id="code-container">
         <pre><code id="code__block"></code></pre>
       </div>
       <div class="card__options">
-        <div class="option option--choice">
-          [3] The array only considers explicitly defined elements for its
-          length.
-        </div>
-        <div class="option option--choice">
-          [11] The length property includes all elements, even if undefined ones
-          exist between indices.
-        </div>
-        <div class="option option--choice">
-          [10] The array's length property stops at the last explicitly assigned
-          index.
-        </div>
+        <div class="option option--choice"></div>
+        <div class="option option--choice"></div>
+        <div class="option option--choice"></div>
       </div>
     </div>
     <audio id="confettiSound" src="assets/confetti.mp3" preload="auto"></audio>

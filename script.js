@@ -9,173 +9,120 @@ const codeTxt = document.getElementById("code__block");
 const codeContainer = document.getElementById("code-container");
 const options = document.querySelectorAll(".option");
 
-// ====================================================================
+// ===========================================================
 
 // questions
 const questions = [
+  // JavaScript Group
   {
-    id: 1,
-    group: "Javascript",
+    id: 10001,
+    group: "JavaScript",
     question: "What will the following code output?",
-    codeBlock: `console.log(typeof null);
+    codeBlock: `
+      console.log(typeof null);
     `,
     options: ["Object", "Null", "Undefined"],
-    correctOption: 0, // Index of the correct option in 'options'
+    correctOption: 0, // "Object"
     timesAsked: 0,
     timesCorrect: 0,
     timesWrong: 0,
   },
   {
-    id: 2,
+    id: 10002,
     group: "JavaScript",
-    question: "What is the output of the following code?",
-    codeBlock: `let x = 10;
-      let y = "10";
-      console.log(x == y);
-    `,
-    options: ["true", "false", "Error"],
-    correctOption: 0, // Index of the correct option in 'options'
-    timesAsked: 0,
-    timesCorrect: 0,
-    timesWrong: 0,
-  },
-  {
-    id: 3,
-    group: "Javascript",
-    question: "What does this code print?",
-    codeBlock: `
-      function test() {
-      console.log(a);
-      var a = 10;
-    }
-    test();
-    `,
-    options: ["10", "undefined", "ReferenceError"],
-    correctOption: 1, // Index of the correct option in 'options'
-    timesAsked: 0,
-    timesCorrect: 0,
-    timesWrong: 0,
-  },
-  {
-    id: 4,
-    group: "Javascript",
-    question: "What will the following code log?",
-    codeBlock: `
-      console.log('1');
-      setTimeout(() => console.log('2'), 1000);
-      console.log('3');
-    `,
-    options: ["1, 2, 3", "1, 3, 2", "3, 1, 2"],
-    correctOption: 1, // Index of the correct option in 'options'
-    timesAsked: 0,
-    timesCorrect: 0,
-    timesWrong: 0,
-  },
-  {
-    id: 5,
-    group: "JavaScript",
-    question: "What is the output of this code?",
-    codeBlock: `
-      const a = [];
-      console.log(a == true);
-    `,
-    options: ["true", "false", "undefined"],
-    correctOption: 1, // false
-    timesAsked: 0,
-    timesCorrect: 0,
-    timesWrong: 0,
-  },
-  {
-    id: 6,
-    group: "JavaScript",
-    question: "Which of these is not a JavaScript data type?",
-    options: ["Object", "Undefined", "Float"],
-    correctOption: 2, // Float
-    timesAsked: 0,
-    timesCorrect: 0,
-    timesWrong: 0,
-  },
-  {
-    id: 7,
-    group: "JavaScript",
-    question: "What is the output of the following code?",
+    question: "What will the following code output?",
     codeBlock: `
       let x = 5;
       let y = "5";
       console.log(x === y);
     `,
     options: ["true", "false", "undefined"],
-    correctOption: 1, // false
+    correctOption: 1, // "false"
     timesAsked: 0,
     timesCorrect: 0,
     timesWrong: 0,
   },
+
+  // Shopify (Liquid) Group
   {
-    id: 8,
-    group: "JavaScript",
-    question: "Which of these methods can be used to combine two arrays?",
-    options: ["push()", "concat()", "splice()"],
-    correctOption: 1, // concat()
-    timesAsked: 0,
-    timesCorrect: 0,
-    timesWrong: 0,
-  },
-  {
-    id: 9,
-    group: "JavaScript",
-    question: "What is the output of this code?",
-    codeBlock: `
-      console.log(typeof NaN);
-    `,
-    options: ["Number", "NaN", "Undefined"],
-    correctOption: 0, // Number
-    timesAsked: 0,
-    timesCorrect: 0,
-    timesWrong: 0,
-  },
-  {
-    id: 10,
-    group: "JavaScript",
-    question: "What will the following code output?",
-    codeBlock: `
-      console.log(0.1 + 0.2 === 0.3);
-    `,
-    options: ["true", "false", "undefined"],
-    correctOption: 1, // false
-    timesAsked: 0,
-    timesCorrect: 0,
-    timesWrong: 0,
-  },
-  {
-    id: 11,
-    group: "JavaScript",
-    question: "What does 'use strict' do in JavaScript?",
+    id: 20001,
+    group: "Shopify",
+    question: "What does the 'render' tag do in Liquid?",
     options: [
-      "Enables modern JavaScript features",
-      "Enforces stricter parsing and error handling",
-      "Prevents variable declaration",
+      "Includes another template file",
+      "Loops through an array",
+      "Declares a new variable",
     ],
-    correctOption: 1, // Enforces stricter parsing and error handling
+    correctOption: 0, // "Includes another template file"
     timesAsked: 0,
     timesCorrect: 0,
     timesWrong: 0,
   },
   {
-    id: 12,
-    group: "JavaScript",
-    question: "What will the following code log?",
-    codeBlock: `let a;
-      console.log(a + 1);
-    `,
-    options: ["1", "NaN", "undefined"],
-    correctOption: 1, // NaN
+    id: 20002,
+    group: "Shopify",
+    question: "What symbol is used to output variables in Liquid?",
+    options: ["{{ }}", "{% %}", "(( ))"],
+    correctOption: 0, // "{{ }}"
+    timesAsked: 0,
+    timesCorrect: 0,
+    timesWrong: 0,
+  },
+
+  // CSS Group
+  {
+    id: 30001,
+    group: "CSS",
+    question: "What does the 'z-index' property do in CSS?",
+    options: [
+      "Sets the stacking order of elements",
+      "Sets the zoom level of elements",
+      "Defines the size of elements",
+    ],
+    correctOption: 0, // "Sets the stacking order of elements"
+    timesAsked: 0,
+    timesCorrect: 0,
+    timesWrong: 0,
+  },
+  {
+    id: 30002,
+    group: "CSS",
+    question: "What is the default position value for HTML elements in CSS?",
+    options: ["static", "relative", "absolute"],
+    correctOption: 0, // "static"
+    timesAsked: 0,
+    timesCorrect: 0,
+    timesWrong: 0,
+  },
+
+  // Git Group
+  {
+    id: 40001,
+    group: "Git",
+    question: "Which command initializes a new Git repository?",
+    options: ["git init", "git clone", "git commit"],
+    correctOption: 0, // "git init"
+    timesAsked: 0,
+    timesCorrect: 0,
+    timesWrong: 0,
+  },
+  {
+    id: 40002,
+    group: "Git",
+    question: "What does 'git pull' do?",
+    options: [
+      "Fetches and merges changes from a remote repository",
+      "Pushes changes to a remote repository",
+      "Shows the commit history",
+    ],
+    correctOption: 0, // "Fetches and merges changes from a remote repository"
     timesAsked: 0,
     timesCorrect: 0,
     timesWrong: 0,
   },
 ];
 
-// ====================================================================
+// ===========================================================
 
 // manage selection
 groupBtns.forEach((b) => {
@@ -194,12 +141,15 @@ mixBtn.addEventListener("click", () => {
   }
 });
 
-// start
-startBtn.addEventListener("click", () => {
-  window.location.href = "questions.html";
-});
+function filterSelected() {
+  const selectedBtns = Array.from(
+    document.querySelectorAll(".selection.selected")
+  );
+  selectedBtns.forEach((s) => console.log(s.dataset.group));
+  console.log(notAsked);
+}
 
-// ====================================================================
+// ===========================================================
 
 const notAsked = [];
 questions.forEach((q) => notAsked.push(q.id));
@@ -209,6 +159,7 @@ const qCorrect = [];
 let selectedQ;
 let correctAns;
 
+// generate a question
 function generateQuestion() {
   const rdmIdx = Math.floor(Math.random() * notAsked.length);
   const removed = notAsked.splice(rdmIdx, 1);
@@ -217,20 +168,25 @@ function generateQuestion() {
   return selectedQ;
 }
 
-// ====================================================================
+// ============================================================
 
-function removeSpace(str) {
+// SHOWING  THE  QUESTION
+
+// remove code space
+function rmvSpc(str) {
   return str.replace(/^\s+/gm, "").trim();
 }
 
-function clearOptions() {
+// clear options
+function clrOptn() {
   options.forEach((o) => {
     o.classList.remove("shake");
   });
 }
 
+// display question in UI
 function displayNewQuestion() {
-  clearOptions();
+  clrOptn();
   selectedQ = generateQuestion();
 
   // img
@@ -243,7 +199,7 @@ function displayNewQuestion() {
   // codeBlock
   codeContainer.style.display = "block";
   selectedQ.codeBlock
-    ? (codeTxt.innerText = removeSpace(selectedQ.codeBlock))
+    ? (codeTxt.innerText = rmvSpc(selectedQ.codeBlock))
     : (codeContainer.style.display = "none");
 
   // options
@@ -252,11 +208,9 @@ function displayNewQuestion() {
     o.innerText = shuffledAns[i];
   });
 }
-
 displayNewQuestion();
 
-// ====================================================================
-
+// picking an answer
 options.forEach((o, i) => {
   o.addEventListener("click", () => {
     const selectedAns = o.innerText;
@@ -280,7 +234,7 @@ options.forEach((o, i) => {
   });
 });
 
-// ====================================================================
+// ============================================================
 
 // confetti
 function playConfetti() {
