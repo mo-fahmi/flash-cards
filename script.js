@@ -2,6 +2,7 @@ const groupBtns = document.querySelectorAll(
   ".groups-buttons button:not(#mix-questions)"
 );
 const mixBtn = document.getElementById("mix-questions");
+const startBtn = document.getElementById("start");
 const groupImg = document.getElementById("question__group-img");
 const questionTxt = document.getElementById("question__txt");
 const codeTxt = document.getElementById("code__block");
@@ -176,22 +177,26 @@ const questions = [
 
 // ====================================================================
 
+// manage selection
 groupBtns.forEach((b) => {
   b.addEventListener("click", () => {
     b.classList.toggle("selected");
     mixBtn.classList.remove("selected");
   });
 });
-
 mixBtn.addEventListener("click", () => {
   const isSelected = mixBtn.classList.contains("selected");
   if (isSelected) {
     mixBtn.classList.remove("selected");
-    groupBtns.forEach((b) => b.classList.remove("selected"));
   } else {
     mixBtn.classList.add("selected");
-    groupBtns.forEach((b) => b.classList.add("selected"));
+    groupBtns.forEach((b) => b.classList.remove("selected"));
   }
+});
+
+// start
+startBtn.addEventListener("click", () => {
+  window.location.href = "questions.html";
 });
 
 // ====================================================================

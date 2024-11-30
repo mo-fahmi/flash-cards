@@ -77,7 +77,7 @@ h1 {
   width: 100%;
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(2, 222px);
+  grid-template-columns: 222px;
   gap: 1rem;
 }
 
@@ -148,7 +148,6 @@ h1 {
   }
 }
 .button.mixed {
-  grid-column: span 2;
   outline: 1px solid hsla(16, 56%, 45%, 0.5);
   background: radial-gradient(
     circle at bottom,
@@ -160,6 +159,14 @@ h1 {
   }
 }
 
+.start {
+  margin: 2.2rem auto 0 auto;
+  width: 100%;
+  color: black;
+  background: radial-gradient(circle at bottom, white 10%, #e8f8fe 80%);
+  outline: 1px solid hsla(216, 56%, 45%, 0.5);
+}
+
 /* QUESTIONS */
 
 .card__container {
@@ -169,6 +176,7 @@ h1 {
   border-radius: 8px;
   background: linear-gradient(to top left, hsl(0, 0%, 98%), hsl(224, 88%, 88%));
   color: #131019;
+  transition: all 0.3s ease;
 }
 
 .card__image {
@@ -296,8 +304,12 @@ code {
   display: none;
 }
 
-/* @media (max-width: 600px) {
+@media (min-width: 600px) {
   .groups-buttons {
-    grid-template-columns: repeat(auto-fill, 222px);
+    grid-template-columns: repeat(2, 222px);
   }
-} */
+
+  .groups-buttons .button.mixed {
+    grid-column: span 2;
+  }
+}

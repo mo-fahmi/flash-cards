@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="/assets/quiz.png" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flash Cards</title>
+  </head>
+  <body>
+    <div class="card__container">
+      <div class="card__image">
+        <img id="question__group-img" src="" alt="" />
+      </div>
+      <div class="card__question">
+        <h2 id="question__txt"></h2>
+      </div>
+      <div class="card__code" id="code-container">
+        <pre><code id="code__block"></code></pre>
+      </div>
+      <div class="card__options">
+        <div class="option option--choice"></div>
+        <div class="option option--choice"></div>
+        <div class="option option--choice"></div>
+      </div>
+    </div>
+    <audio id="confettiSound" src="assets/confetti.mp3" preload="auto"></audio>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+  </body>
+</html>
