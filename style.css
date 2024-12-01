@@ -303,7 +303,6 @@ code {
 .shake {
   color: white;
   animation: shake 0.2s;
-  animation-iteration-count: 1;
   background: linear-gradient(to bottom right, #ff6356, #ffa48f);
 }
 

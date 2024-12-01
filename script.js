@@ -166,7 +166,7 @@ function filterSelected() {
     return;
   }
   // if individual groups selected
-  qIDs.filter((id) => sArr.some((s) => id.toString().startsWith(s)));
+  qIDs = qIDs.filter((id) => sArr.some((s) => id.toString().startsWith(s)));
 
   startTheShow();
   return qIDs;
