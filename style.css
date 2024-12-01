@@ -40,6 +40,7 @@ img {
 /* CODE STARTS HERE --------------------------------------- */
 
 body {
+  position: relative;
   min-height: 100vh;
   padding: 3rem;
   display: flex;
@@ -69,6 +70,33 @@ h1 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/*  The  Meme  */
+
+.stop__meme__overlay:hover {
+  cursor: pointer;
+}
+
+.stop__meme__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  z-index: 998;
+}
+
+img.stop {
+  border-radius: 1rem;
+  width: 300px;
+  position: absolute;
+  z-index: 999;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* choosing groups */

@@ -1,15 +1,18 @@
+const selectionForm = document.querySelector(".select__and__start");
 const groupBtns = document.querySelectorAll(
   ".groups-buttons button:not(#mix-questions)"
 );
 const mixBtn = document.getElementById("mix-questions");
 const startBtn = document.getElementById("start");
+
+const cardContainer = document.querySelector(".card__container");
 const groupImg = document.getElementById("question__group-img");
 const questionTxt = document.getElementById("question__txt");
 const codeTxt = document.getElementById("code__block");
 const codeContainer = document.getElementById("code-container");
 const options = document.querySelectorAll(".option");
 
-// ===========================================================
+// ============================================
 
 // questions
 const questions = [
@@ -122,62 +125,83 @@ const questions = [
   },
 ];
 
-// ===========================================================
+// ============================================
 
-// manage selection
+// MANAGE  SELECTIONS
+let selectionClicks = 0;
+
+// Handle select individual groups
 groupBtns.forEach((b) => {
   b.addEventListener("click", () => {
+    memeTime();
     b.classList.toggle("selected");
     mixBtn.classList.remove("selected");
   });
 });
+
+// Handle select all
 mixBtn.addEventListener("click", () => {
-  const isSelected = mixBtn.classList.contains("selected");
-  if (isSelected) {
-    mixBtn.classList.remove("selected");
-  } else {
-    mixBtn.classList.add("selected");
-    groupBtns.forEach((b) => b.classList.remove("selected"));
-  }
+  memeTime();
+  mixBtn.classList.toggle("selected");
+  groupBtns.forEach((b) => b.classList.remove("selected"));
 });
 
+let qIDs;
+
+// Start button filter selected
 function filterSelected() {
   const selectedBtns = Array.from(
     document.querySelectorAll(".selection.selected")
   );
-  selectedBtns.forEach((s) => console.log(s.dataset.group));
-  console.log(notAsked);
+
+  // selected group values
+  const sArr = selectedBtns.map((s) => s.dataset.group);
+
+  // All Questions' Ids
+  qIDs = questions.map((q) => q.id);
+
+  // if All button is selected
+  if (sArr.includes("all")) {
+    startTheShow();
+    return;
+  }
+  // if individual groups selected
+  qIDs.filter((id) => sArr.some((s) => id.toString().startsWith(s)));
+
+  startTheShow();
+  return qIDs;
 }
 
-// ===========================================================
+// ============================================
 
-const notAsked = [];
-questions.forEach((q) => notAsked.push(q.id));
+// GENERATE  A  QUESTION
 
 const qCorrect = [];
-
 let selectedQ;
 let correctAns;
 
-// generate a question
 function generateQuestion() {
-  const rdmIdx = Math.floor(Math.random() * notAsked.length);
-  const removed = notAsked.splice(rdmIdx, 1);
+  console.log(qIDs);
+  const rdmIdx = Math.floor(Math.random() * qIDs.length);
+  const removed = qIDs.splice(rdmIdx, 1);
+  // find a question by ID
   selectedQ = questions.find((q) => q.id === Number(removed));
   selectedQ.timesAsked++;
+  console.log(qIDs);
   return selectedQ;
 }
 
-// ============================================================
+// ============================================
 
 // SHOWING  THE  QUESTION
-
-// remove code space
-function rmvSpc(str) {
-  return str.replace(/^\s+/gm, "").trim();
+function startTheShow() {
+  // hide form and show questions
+  selectionForm.classList.add("hide");
+  cardContainer.classList.remove("hide");
+  displayNewQuestion();
 }
 
-// clear options
+// clear options first
 function clrOptn() {
   options.forEach((o) => {
     o.classList.remove("shake");
@@ -186,29 +210,30 @@ function clrOptn() {
 
 // display question in UI
 function displayNewQuestion() {
+  // clear options and generate a new question
   clrOptn();
   selectedQ = generateQuestion();
 
-  // img
+  // change icon
   const group = selectedQ.group.toLowerCase();
   groupImg.src = `assets/${group}.png`;
 
-  // question
+  // question text
   questionTxt.innerText = selectedQ.question;
 
   // codeBlock
   codeContainer.style.display = "block";
   selectedQ.codeBlock
-    ? (codeTxt.innerText = rmvSpc(selectedQ.codeBlock))
+    ? (codeTxt.innerText = selectedQ.codeBlock.replace(/^\s+/gm, "").trim()) // to remove whitespace
     : (codeContainer.style.display = "none");
 
-  // options
+  // options (shuffled)
   const shuffledAns = selectedQ.options.slice().sort(() => Math.random() - 0.5);
   options.forEach((o, i) => {
     o.innerText = shuffledAns[i];
   });
 }
-displayNewQuestion();
+// displayNewQuestion();
 
 // picking an answer
 options.forEach((o, i) => {
@@ -230,11 +255,11 @@ options.forEach((o, i) => {
     // wrong answer
     o.classList.add("shake");
     selectedQ.timesWrong++;
-    if (!notAsked.includes(Number(selectedQ.id))) notAsked.push(selectedQ.id);
+    if (!qIDs.includes(Number(selectedQ.id))) qIDs.push(selectedQ.id);
   });
 });
 
-// ============================================================
+// ============================================
 
 // confetti
 function playConfetti() {
@@ -254,3 +279,15 @@ function playConfetti() {
     origin: { x: 0, y: 0.7 },
   });
 }
+
+// MEME
+const meme = document.querySelector(".stop__meme");
+function memeTime() {
+  selectionClicks++;
+  if (selectionClicks == 12) meme.classList.remove("hide");
+}
+meme.addEventListener("click", () => {
+  meme.classList.add("hide");
+});
+
+// ============================================
