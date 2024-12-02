@@ -197,14 +197,33 @@ img.stop {
 
 /* QUESTIONS */
 
-.card__container {
+.card__container--group {
+  border-radius: 8px;
+  outline: 1px solid hsla(150, 56%, 45%, 0.5);
+  color: #131019;
+  background: linear-gradient(to top left, hsl(0, 0%, 98%), hsl(224, 88%, 88%));
+  padding: calc(2rem + 24px) 2rem 2rem;
   width: 380px;
   position: relative;
-  padding: calc(2rem + 24px) 2rem 2rem;
-  border-radius: 8px;
-  background: linear-gradient(to top left, hsl(0, 0%, 98%), hsl(224, 88%, 88%));
-  color: #131019;
   transition: all 0.3s ease;
+}
+
+#q__correct,
+#q__wrong {
+  font-weight: 600;
+}
+.question__details {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  color: hsl(208, 12%, 72%);
+}
+
+#q__correct {
+  color: hsl(150, 56%, 56%);
+}
+#q__wrong {
+  color: hsl(0, 56%, 56%);
 }
 
 .card__image {

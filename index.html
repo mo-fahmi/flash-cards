@@ -40,21 +40,30 @@
       </button>
     </div>
     <div class="card__container hide">
-      <div class="card__image">
-        <img id="question__group-img" src="" alt="" />
+      <div class="card__container--group">
+        <div class="card__image">
+          <img id="question__group-img" src="" alt="" />
+        </div>
+        <div class="card__question">
+          <h2 id="question__txt"></h2>
+        </div>
+        <div class="card__code" id="code-container">
+          <pre><code id="code__block"></code></pre>
+        </div>
+        <div class="card__options">
+          <div class="option option--choice"></div>
+          <div class="option option--choice"></div>
+          <div class="option option--choice"></div>
+        </div>
       </div>
-      <div class="card__question">
-        <h2 id="question__txt"></h2>
-      </div>
-      <div class="card__code" id="code-container">
-        <pre><code id="code__block"></code></pre>
-      </div>
-      <div class="card__options">
-        <div class="option option--choice"></div>
-        <div class="option option--choice"></div>
-        <div class="option option--choice"></div>
+      <div class="question__details">
+        <p>Asked: <span id="q__asked"></span></p>
+        <p>Remaining: <span id="q__remaining"></span></p>
+        <p>Correct: <span id="q__correct"></span></p>
+        <p>Wrong: <span id="q__wrong"></span></p>
       </div>
     </div>
+
     <audio id="confettiSound" src="assets/confetti.mp3" preload="auto"></audio>
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>

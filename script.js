@@ -11,6 +11,10 @@ const questionTxt = document.getElementById("question__txt");
 const codeTxt = document.getElementById("code__block");
 const codeContainer = document.getElementById("code-container");
 const options = document.querySelectorAll(".option");
+const qAsked = document.getElementById("q__asked");
+const qRemaining = document.getElementById("q__remaining");
+const qCorrect = document.getElementById("q__correct");
+const qWrong = document.getElementById("q__wrong");
 
 // ============================================
 
@@ -176,18 +180,20 @@ function filterSelected() {
 
 // GENERATE  A  QUESTION
 
-const qCorrect = [];
+const qCorrectArr = [];
 let selectedQ;
 let correctAns;
+let qAskedCount = 1;
+let qWrongCount = 0;
+let qCorrectCount = 0;
 
 function generateQuestion() {
-  console.log(qIDs);
   const rdmIdx = Math.floor(Math.random() * qIDs.length);
   const removed = qIDs.splice(rdmIdx, 1);
   // find a question by ID
   selectedQ = questions.find((q) => q.id === Number(removed));
+  qAskedCount++;
   selectedQ.timesAsked++;
-  console.log(qIDs);
   return selectedQ;
 }
 
@@ -198,6 +204,7 @@ function startTheShow() {
   // hide form and show questions
   selectionForm.classList.add("hide");
   cardContainer.classList.remove("hide");
+
   displayNewQuestion();
 }
 
@@ -210,7 +217,10 @@ function clrOptn() {
 
 // display question in UI
 function displayNewQuestion() {
+  updateScores();
+
   // clear options and generate a new question
+  wrongAttempted = false;
   clrOptn();
   selectedQ = generateQuestion();
 
@@ -236,6 +246,8 @@ function displayNewQuestion() {
 // displayNewQuestion();
 
 // picking an answer
+let wrongAttempted = false;
+
 options.forEach((o, i) => {
   o.addEventListener("click", () => {
     const selectedAns = o.innerText;
@@ -243,9 +255,15 @@ options.forEach((o, i) => {
 
     // right answer
     if (selectedAns === correctAns) {
-      playConfetti();
-      selectedQ.timesCorrect++;
-      qCorrect.push(selectedQ.id);
+      if (!wrongAttempted) {
+        // Only count if no wrong answers were clicked
+        playConfetti();
+        selectedQ.timesCorrect++;
+        qCorrectCount++;
+        qCorrectArr.push(selectedQ.id);
+        updateScores();
+      }
+
       setTimeout(() => {
         displayNewQuestion();
       }, 650);
@@ -255,9 +273,22 @@ options.forEach((o, i) => {
     // wrong answer
     o.classList.add("shake");
     selectedQ.timesWrong++;
+    qWrongCount++;
+    updateScores();
+
+    wrongAttempted = true;
+
     if (!qIDs.includes(Number(selectedQ.id))) qIDs.push(selectedQ.id);
   });
 });
+
+// updating scores
+function updateScores() {
+  qCorrect.innerText = qCorrectCount;
+  qRemaining.innerText = qIDs.length - 1;
+  qAsked.innerText = qAskedCount;
+  qWrong.innerText = qWrongCount;
+}
 
 // ============================================
 
