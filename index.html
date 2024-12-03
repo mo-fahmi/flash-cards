@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="/assets/quiz.png" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flash Cards</title>
+  </head>
+  <body>
+    <div class="stop__meme hide">
+      <img src="assets/stop.jpg" alt="" class="stop" />
+      <div class="stop__meme__overlay"></div>
+    </div>
+    <h1>Make Studying Great Again</h1>
+    <div class="select__and__start">
+      <div class="groups-buttons">
+        <button data-group="1" class="button selection js">
+          <img class="icon" src="assets/javascript.png" alt="" />JavaScript
+        </button>
+        <button data-group="2" class="button selection shopify">
+          <img class="icon" src="assets/shopify.png" alt="" />Liquid
+        </button>
+        <button data-group="3" class="button selection css">
+          <img class="icon" src="assets/css.png" alt="" />CSS
+        </button>
+        <button data-group="4" class="button selection git">
+          <img class="icon" src="assets/git.png" alt="" />Git
+        </button>
+        <button
+          data-group="all"
+          class="button selection mixed"
+          id="mix-questions"
+        >
+          <img class="icon" src="assets/quiz.png" alt="" />All Mixed
+        </button>
+      </div>
+      <button onclick="filterSelected()" class="button start" id="start">
+        Start
+      </button>
+    </div>
+    <div class="card__container hide">
+      <div class="card__container--group">
+        <div class="card__image">
+          <img id="question__group-img" src="" alt="" />
+        </div>
+        <div class="card__question">
+          <h2 id="question__txt"></h2>
+        </div>
+        <div class="card__code" id="code-container">
+          <pre><code id="code__block"></code></pre>
+        </div>
+        <div class="card__options">
+          <div class="option option--choice"></div>
+          <div class="option option--choice"></div>
+          <div class="option option--choice"></div>
+        </div>
+      </div>
+      <div class="question__details">
+        <p>Asked: <span id="q__asked"></span></p>
+        <p>Remaining: <span id="q__remaining"></span></p>
+        <p>Correct: <span id="q__correct"></span></p>
+        <p>Wrong: <span id="q__wrong"></span></p>
+      </div>
+    </div>
+
+    <audio id="confettiSound" src="assets/confetti.mp3" preload="auto"></audio>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+  </body>
+</html>

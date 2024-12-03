@@ -1,0 +1,361 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+}
+html:focus-within {
+  scroll-behavior: smooth;
+}
+body {
+  line-height: 1.2;
+}
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+  margin: 0;
+  vertical-align: middle;
+}
+button,
+select {
+  text-transform: none;
+}
+textarea {
+  resize: vertical;
+}
+img {
+  border: none;
+  max-width: 100%;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* CODE STARTS HERE --------------------------------------- */
+
+body {
+  position: relative;
+  min-height: 100vh;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  background: linear-gradient(
+    to top left,
+    hsl(251, 21%, 7%),
+    hsl(271, 21%, 11%)
+  );
+  color: white;
+  font-family: sans-serif;
+}
+
+h1 {
+  font-size: 50px;
+  text-align: center;
+  max-width: 20ch;
+  text-wrap: balance;
+  background: radial-gradient(
+    59.2% 100% at 49.93% 0%,
+    #ffffff 0%,
+    #48444e 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/*  The  Meme  */
+
+.stop__meme__overlay:hover {
+  cursor: pointer;
+}
+
+.stop__meme__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  z-index: 998;
+}
+
+img.stop {
+  border-radius: 1rem;
+  width: 300px;
+  position: absolute;
+  z-index: 999;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* choosing groups */
+
+.groups-buttons {
+  width: 100%;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 222px;
+  gap: 1rem;
+}
+
+.button {
+  cursor: pointer;
+  padding: 1rem;
+  font-size: 1.2rem;
+  color: white;
+  border-radius: 0.5em;
+  box-shadow: 0 0 1em 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-out;
+  position: relative;
+}
+
+.button:hover {
+  transform: scale(1.015);
+  transition: all 0.1s ease;
+}
+
+.icon {
+  margin: -3px 0.5em 0 0;
+  width: 1em;
+  border-radius: 4px;
+}
+
+.button.css {
+  outline: 1px solid hsla(216, 56%, 45%, 0.5);
+  background: radial-gradient(
+    circle at bottom,
+    hsla(216, 66%, 46%, 0.6),
+    hsl(216, 56%, 6%) 70%
+  );
+  &.selected {
+    outline: 3px solid hsl(216, 56%, 72%);
+  }
+}
+.button.js {
+  outline: 1px solid hsla(40, 56%, 45%, 0.5);
+  background: radial-gradient(
+    circle at bottom,
+    hsla(40, 66%, 46%, 0.5),
+    hsl(40, 56%, 6%) 70%
+  );
+  &.selected {
+    outline: 3px solid hsl(40, 56%, 72%);
+  }
+}
+.button.shopify {
+  outline: 1px solid hsla(150, 56%, 45%, 0.5);
+  background: radial-gradient(
+    circle at bottom,
+    hsla(150, 66%, 46%, 0.5),
+    hsl(150, 56%, 6%) 70%
+  );
+  &.selected {
+    outline: 3px solid hsl(150, 56%, 72%);
+  }
+}
+.button.git {
+  outline: 1px solid hsla(250, 56%, 45%, 0.5);
+  background: radial-gradient(
+    circle at bottom,
+    hsla(250, 66%, 46%, 0.6),
+    hsl(250, 56%, 6%) 70%
+  );
+  &.selected {
+    outline: 3px solid hsl(250, 56%, 80%);
+  }
+}
+.button.mixed {
+  outline: 1px solid hsla(16, 56%, 45%, 0.5);
+  background: radial-gradient(
+    circle at bottom,
+    hsla(16, 66%, 46%, 0.4),
+    hsl(16, 56%, 6%) 70%
+  );
+  &.selected {
+    outline: 3px solid hsl(16, 56%, 80%);
+  }
+}
+
+.start {
+  margin: 2.2rem auto 0 auto;
+  width: 100%;
+  color: black;
+  background: radial-gradient(circle at bottom, white 10%, #e8f8fe 80%);
+  outline: 1px solid hsla(216, 56%, 45%, 0.5);
+}
+
+/* QUESTIONS */
+
+.card__container--group {
+  border-radius: 8px;
+  outline: 1px solid hsla(150, 56%, 45%, 0.5);
+  color: #131019;
+  background: linear-gradient(to top left, hsl(0, 0%, 98%), hsl(224, 88%, 88%));
+  padding: calc(2rem + 24px) 2rem 2rem;
+  width: 380px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+#q__correct,
+#q__wrong {
+  font-weight: 600;
+}
+.question__details {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  color: hsl(208, 12%, 72%);
+}
+
+#q__correct {
+  color: hsl(150, 56%, 56%);
+}
+#q__wrong {
+  color: hsl(0, 56%, 56%);
+}
+
+.card__image {
+  width: 24px;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  font-size: 24px;
+  text-wrap: balance;
+}
+
+.card__code {
+  background-color: hsl(0, 0%, 14%);
+  padding: 5px 8px;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  box-shadow: 4px 4px 14px hsla(200, 20%, 20%, 0.4);
+}
+
+pre {
+  white-space: pre-wrap;
+  text-indent: 0;
+  padding: 8px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 14px;
+  color: #f8f8f2;
+  overflow-x: auto;
+  line-height: 1.5;
+}
+
+pre::-webkit-scrollbar {
+  height: 6px;
+}
+
+pre::-webkit-scrollbar-track {
+  overflow: hidden;
+  border-radius: 0 1rem 1rem 0;
+  background-color: transparent;
+}
+
+pre::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: hsl(0, 0%, 64%);
+}
+
+code {
+  color: #f8f6f2;
+}
+
+.card__options {
+  display: grid;
+  gap: 1rem;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.option {
+  padding: 12px 14px;
+  position: relative;
+  border-radius: 3px;
+  z-index: 2;
+  overflow: hidden;
+  user-select: none;
+  background: linear-gradient(to left, hsl(240, 54%, 80%), hsl(224, 65%, 80%));
+}
+
+.option:not(.shake)::after {
+  position: absolute;
+  content: "";
+  z-index: -1;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  filter: blur(32px);
+  transform: translateX(0);
+  transition: transform 0.5s ease;
+  background: linear-gradient(to left, hsl(190, 63%, 61%), hsl(208, 55%, 72%));
+}
+
+.option:not(.shake):hover::after {
+  transform: translateX(100%);
+}
+
+.option:active {
+  scale: 1.01;
+}
+
+/* shake on wrong answer */
+.shake {
+  color: white;
+  animation: shake 0.2s;
+  background: linear-gradient(to bottom right, #ff6356, #ffa48f);
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+.hide {
+  display: none;
+}
+
+@media (min-width: 600px) {
+  .groups-buttons {
+    grid-template-columns: repeat(2, 222px);
+  }
+
+  .groups-buttons .button.mixed {
+    grid-column: span 2;
+  }
+}
